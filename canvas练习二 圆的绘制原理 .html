@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>jQuery</title>
+    <style type="text/css">
+#mycanvas {border: 1px solid #000;}
+
+    </style>
+  </head>
+  <body>
+  <canvas id="mycanvas" width="300" height="200"></canvas>
+   
+  </body>
+  <script src="jquery-3.2.1.min (1).js"></script> 
+  <script>
+    /**********纯jQuery写的**********/
+$(function(){
+	//圆形
+  //arc(x, y, radius, startAngle, endAngle, counterclockwise)
+  //x,y radius圆心坐标 半径
+  //startAngle--开始角度, endAngle--结束角度,开始角度为0 正半轴0度 范围是 0 ~ Math.PI*2  
+  //counterclockwise true是逆时钟画 false 顺时针画（不设置为逆时钟）
+  var c = document.getElementById('mycanvas');
+  var ctx = c.getContext('2d');
+  ctx.strokeStyle = '#00ff00';
+  ctx.arc(30,30,20,Math.PI/2,Math.PI,false);
+  ctx.stroke(); 
+  ctx.strokeStyle = '#00ffff';
+
+ // 画圆角
+  ctx.moveTo(60,10);    //在左上方开始
+ctx.lineTo(110,10); 
+ctx.stroke();  
+  ctx.beginPath()//到达圆角开始点的水平线  开始绘制路径
+ctx.arc(110,20,10,0,Math.PI*3/2,true);
+ctx.moveTo(120,20);  //圆角
+ctx.lineTo(120,100);    //到达右下方的垂直线
+ ctx.stroke(); 
+
+ //ctx.cloePath()//把画的东西封闭起来
+
+ //相当于
+ //c.moveTo(60,10);   //在左上方开始
+//c.lineTo(110,10);    //到达圆角开始点的水平线
+//c.arcTo(120,10,120,20,10);  //圆角
+//c.lineTo(120,100);
+})
+    </script>
+   </body>
+</html>

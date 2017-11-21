@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>jQuery</title>
+    <style type="text/css">
+#mycanvas {border: 1px solid #000;}
+
+    </style>
+  </head>
+  <body>
+  <canvas id="mycanvas" width="300" height="200"></canvas>
+   
+  </body>
+  <script src="jquery-3.2.1.min (1).js"></script> 
+  <script>
+    /**********纯jQuery写的**********/
+$(function(){
+	//圆形
+  //arc(x, y, radius, startAngle, endAngle, counterclockwise)
+  //x,y radius圆心坐标 半径
+  //startAngle--开始角度, endAngle--结束角度,开始角度为0 正半轴0度 范围是 0 ~ Math.PI*2  
+  //counterclockwise true是逆时钟画 flase 顺时针画（不设置为逆时钟）
+  var c = document.getElementById('mycanvas');
+  var ctx = c.getContext('2d');
+  ctx.beginPath();//开始绘制 
+  ctx.fillStyle = "#ff00ff";
+  ctx.moveTo(10,10);
+  ctx.lineTo(30,10);
+  ctx.lineTo(30,30);
+  ctx.fill();
+  ctx.closePath();//结束绘制 
+   
+setTimeout(function(){ctx.clearRect(0,0,300,200)}, 500)//清除300*200内的所有内容 也可以自行定义
+})
+    </script>
+   </body>
+</html>
